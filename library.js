@@ -31,8 +31,9 @@ const library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 const printPlaylists = function(obj) {
-  for (const playlist of Object.keys(obj["playlists"])) {
-    console.log(`${playlist}: ${obj['playlists'][playlist]['name']} - ${obj['playlists'][playlist]['tracks'].length} tracks`);
+  const playLists = obj["playlists"];
+  for (const playlist of Object.keys(playLists)) {
+    console.log(`${playlist}: ${playLists[playlist]['name']} - ${playLists[playlist]['tracks'].length} tracks`);
   }
 }
 
