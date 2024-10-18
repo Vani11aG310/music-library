@@ -30,8 +30,8 @@ const library = {
 // prints a list of all playlists, in the form:
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
-const printPlaylists = function(obj) {
-  const playLists = obj.playlists;
+const printPlaylists = function() {
+  const playLists = library.playlists;
   for (const playList of Object.keys(playLists)) {
     console.log(`${playList}: ${playLists[playList]['name']} - ${playLists[playList]['tracks'].length} tracks`);
   }
@@ -42,10 +42,12 @@ const printPlaylists = function(obj) {
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
-const printTracks = function(obj) {
-  const tracks = obj.tracks;
+const printTracks = function() {
+  const tracks = library.tracks;
   for (const track of Object.keys(tracks)) {
-    console.log(`${track}: ${tracks[track]['name']} by ${tracks[track]['artist']} (${tracks[track]['album']})`);
+    console.log(
+      `${track}: ${tracks[track]['name']} by ${tracks[track]['artist']} (${tracks[track]['album']})`
+    );
   }
 }
 
@@ -55,7 +57,19 @@ const printTracks = function(obj) {
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
-
+  // loop through playlists in library to find correct playlist based on provided ID
+  const playLists = library.playlists;
+  const tracks = library.tracks;
+  for (const playList of Object.keys(playLists)) {
+    // check to see if ID is in associated with the playlist
+    if (playlistId === playLists[playList]['id']){
+      console.log(`${playlistId}: ${playLists[playList]['name']} - ${playLists[playList]['tracks'].length} tracks`);
+      //loop through track array of playlist and print the associated track
+      for (const track of playLists[playList]['tracks']) {
+        console.log(`${track}: ${tracks[track]['name']} by ${tracks[track]['artist']} (${tracks[track]['album']})`)
+      }
+    }
+  }
 }
 
 
@@ -93,5 +107,6 @@ const printSearchResults = function(query) {
 
 }
 
-printPlaylists(library);
-printTracks(library);
+// printPlaylists();
+// printTracks();
+printPlaylist("p01");
