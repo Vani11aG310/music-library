@@ -30,8 +30,10 @@ const library = {
 // prints a list of all playlists, in the form:
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
-const printPlaylists = function() {
-
+const printPlaylists = function(obj) {
+  for (const playlist of Object.keys(obj["playlists"])) {
+    console.log(`${playlist}: ${obj['playlists'][playlist]['name']} - ${obj['playlists'][playlist]['tracks'].length} tracks`);
+  }
 }
 
 
@@ -86,3 +88,5 @@ const addPlaylist = function(name) {
 const printSearchResults = function(query) {
 
 }
+
+printPlaylists(library);
