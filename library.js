@@ -75,7 +75,9 @@ const printPlaylist = function(playlistId) {
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
-
+  const playlist = library.playlists[playlistId];
+  playlist.tracks.push(trackId);
+  console.log(playlist);
 }
 
 
@@ -88,13 +90,26 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
+  const trackId = generateUid();
+  library.tracks[`${trackId}`] = {
+    id: trackId,
+    name: name,
+    artist: artist,
+    album: album
+  }
+  console.log(library.tracks);
 }
 
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
-
+  const playlistId = generateUid();
+  library.playlists[`${playlistId}`] = {
+    id: playlistId,
+    name: name,
+    tracks: []
+  }
+  console.log(library.playlists);
 }
 
 
@@ -107,6 +122,9 @@ const printSearchResults = function(query) {
 
 }
 
-// printPlaylists();
-// printTracks();
+printPlaylists();
+printTracks();
 printPlaylist("p01");
+addTrackToPlaylist("t03", "p01");
+addTrack("Music Library", "Johnny Appleseed", "2020 Album");
+addPlaylist("New Playlist");
