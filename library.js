@@ -31,9 +31,9 @@ const library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 const printPlaylists = function(obj) {
-  const playLists = obj["playlists"];
-  for (const playlist of Object.keys(playLists)) {
-    console.log(`${playlist}: ${playLists[playlist]['name']} - ${playLists[playlist]['tracks'].length} tracks`);
+  const playLists = obj.playlists;
+  for (const playList of Object.keys(playLists)) {
+    console.log(`${playList}: ${playLists[playList]['name']} - ${playLists[playList]['tracks'].length} tracks`);
   }
 }
 
@@ -42,8 +42,11 @@ const printPlaylists = function(obj) {
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
-const printTracks = function() {
-
+const printTracks = function(obj) {
+  const tracks = obj.tracks;
+  for (const track of Object.keys(tracks)) {
+    console.log(`${track}: ${tracks[track]['name']} by ${tracks[track]['artist']} (${tracks[track]['album']})`);
+  }
 }
 
 
@@ -91,3 +94,4 @@ const printSearchResults = function(query) {
 }
 
 printPlaylists(library);
+printTracks(library);
